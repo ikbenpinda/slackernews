@@ -24,6 +24,7 @@ public class MessageSenderGateway {
     private Session session;
     private Destination destination;
     private MessageProducer producer;
+    private Logger logger;
 
     public MessageSenderGateway(String channelName) {
 
@@ -33,20 +34,33 @@ public class MessageSenderGateway {
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             destination = session.createQueue(channelName);
             producer = session.createProducer(destination);
+            logger = Logger.getLogger(MessageReceiverGateway.class.getName());
 
             connection.start();
         }
         catch(JMSException e){
-            Logger.getLogger(MessageReceiverGateway.class.getName()).log(Level.SEVERE,"Failed to setup connection! :(");
+            logger.log(Level.SEVERE,"Failed to setup connection! :(");
             e.printStackTrace();
         }
     }
 
     public Message createTextMessage(String body){
-        // todo - compose textmessage.
+        try {
+            TextMessage textMessage = (TextMessage) session.createTextMessage(body);
+            return textMessage;
+        } catch (JMSException e) {
+            logger.log(Level.SEVERE, "Failed to parse message! :(");
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void send(Message message){
-        // todo - send composed message.
+        try {
+            producer.send(destination, message);
+        } catch (JMSException e) {
+            logger.log(Level.SEVERE, "Failed to send message! :(");
+            e.printStackTrace();
+        }
     }
 }

@@ -1,11 +1,13 @@
 package nl.achan.monitoring;
 
+import nl.achan.aggregate.Categories;
+
 /**
  * A collection of hardcoded key values.
  *
  * Created by Etienne on 9-6-2017.
  */
-public class Configuration { // FIXME - move to properties file.
+public class Configuration { // FIXME - move to properties file?
 
     /**
      * The ActiveMQ port. The default port is 61616.
@@ -21,6 +23,36 @@ public class Configuration { // FIXME - move to properties file.
      * The full broker URL for the ActiveMQConnectionFactory.
      */
     public static final String DEFAULT_BROKER_URL = "tcp://" + DOCKER_IP + ":" + ACTIVEMQ_PORT;
+
+    /**
+     * The queue for publishers to publish articles to.
+     */
+    public static final String PUBLISHER_QUEUE = "PublisherQueue";
+
+    /**
+     * Channel name for the related topic.
+     */
+    public static final String SUBSCRIBER_TOPIC_TECHNOLOGY = Categories.TECHNOLOGY.name() + "Topic";
+
+    /**
+     * Channel name for the related topic.
+     */
+    public static final String SUBSCRIBER_TOPIC_SPORTS = Categories.SPORTS.name() + "Topic";
+
+    /**
+     * Channel name for the related topic.
+     */
+    public static final String SUBSCRIBER_TOPIC_GAMING = Categories.GAMING.name() + "Topic";
+
+    /**
+     * Channel name for the related topic.
+     */
+    public static final String SUBSCRIBER_TOPIC_MISCELLANEOUS = Categories.MISCELLANEOUS.name() + "Topic";
+
+    /**
+     * Channel name for the related topic.
+     */
+    public static final String SUBSCRIBER_TOPIC_POLITICS = Categories.POLITICS.name() + "Topic";
 
     /**
      * The queue for the AdMob bid replies.

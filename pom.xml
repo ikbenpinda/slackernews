@@ -5,7 +5,10 @@
   <groupId>nl.achan</groupId>
   <artifactId>slackernews</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <!--  Since this project is deployed to a web server, we package this as a web archive.  -->
+    <!--<modules>-->
+        <!--<module>SlackerNewsPublishers</module>-->
+    <!--</modules>-->
+    <!--  Since this project is deployed to a web server, we package this as a web archive.  -->
   <packaging>war</packaging>
 
   <name>slackernews</name>
@@ -19,7 +22,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
@@ -43,6 +46,11 @@
       <artifactId>javaee-web-api</artifactId>
       <version>7.0</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
     </dependency>
   </dependencies>
 

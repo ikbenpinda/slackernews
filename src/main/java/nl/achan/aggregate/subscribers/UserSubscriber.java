@@ -1,24 +1,22 @@
 package nl.achan.aggregate.subscribers;
 
-import javax.jms.Message;
-import javax.jms.MessageListener;
-
 /**
  * The basic listener representing an individual user.
  *
  * Created by Etienne on 9-6-2017.
  */
-public class UserSubscriber implements Subscriber, MessageListener{
+public class UserSubscriber implements Subscriber{
 
     UserApplicationGateway gateway;
 
-    @Override
-    public void subscribe(String topic) {
-
+    public UserSubscriber(UserApplicationGateway gateway) {
+        this.gateway = new UserApplicationGateway();
     }
 
     @Override
-    public void onMessage(Message message) {
-
+    public void subscribe(String topic) {
+        gateway.subscribe(topic, article -> {
+            // todo - handle incoming article.
+        });
     }
 }

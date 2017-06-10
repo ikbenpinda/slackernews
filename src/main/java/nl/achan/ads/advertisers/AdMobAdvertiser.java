@@ -26,12 +26,12 @@ public class AdMobAdvertiser extends BaseAdvertiser /*implements Advertiser, Mes
 //        receiver = new MessageReceiverGateway("AdMobRequestQueue");
     }
 
-    @Override
+    //@Override
     public void sendBid(BidRequest bid) {
         // send to queue
     }
 
-    @Override
+    //@Override
     public void onMessage(Message message) {
         // randomized amount in new bid
         // send bid

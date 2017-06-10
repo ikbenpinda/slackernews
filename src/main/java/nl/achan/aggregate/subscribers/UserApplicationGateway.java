@@ -11,31 +11,32 @@ import java.util.logging.Logger;
 /**
  * Created by Etienne on 10-6-2017.
  */
-public class UserApplicationGateway implements MessageListener {
+public class UserApplicationGateway {
 
     private String topic;
     private MessageReceiverTopicGateway receiver;
     private ArticleSerializer serializer;
+    private Logger logger;
+    private OnMessageReceived callback;
 
-    public UserApplicationGateway(String topic) {
-        this.topic = topic;
-        receiver = new MessageReceiverTopicGateway(topic);
-        receiver.setListener(this);
+    public UserApplicationGateway() {
         serializer = new ArticleSerializer();
+        logger = Logger.getLogger(UserApplicationGateway.class.getName());
     }
 
-    void onMessageReceived(Article article){
-        Logger.getLogger(UserApplicationGateway.class.getName()).log(Level.INFO, "Received new article in topic: " + topic + ": " + article.toString());
-    }
-
-    void setTopic(String topic){
+    public void subscribe(String topic, OnMessageReceived callback){
         this.topic = topic;
+        this.callback = callback;
         receiver = new MessageReceiverTopicGateway(topic);
-        receiver.setListener(this);
+        receiver.setListener(message -> {
+            Article article = serializer.fromMessage(message);
+            logger.log(Level.INFO, "Received new article in topic: " + topic + ": " + article.toString());
+            if (callback != null)
+                callback.execute(article);
+        });
     }
 
-    @Override
-    public void onMessage(Message message) {
-        onMessageReceived(serializer.fromMessage(message));
+    public interface OnMessageReceived {
+        void execute(Article article);
     }
 }

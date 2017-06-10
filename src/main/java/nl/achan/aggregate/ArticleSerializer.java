@@ -10,16 +10,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * One-way deserializer for articles.
+ * Serializer for articles.
  *
  * Created by Etienne on 10-6-2017.
  */
 public class ArticleSerializer {
 
-    Gson jsonSerializer;
+    private final Gson jsonSerializer;
+    private final Logger logger;
 
     public ArticleSerializer() {
         jsonSerializer = new Gson();
+        logger = Logger.getLogger(ArticleSerializer.class.getName());
     }
 
     public Article fromMessage(Message message) {
@@ -29,13 +31,21 @@ public class ArticleSerializer {
             Article article = jsonSerializer.fromJson(text, Article.class);
             return article;
         } catch (JMSException e){
-            Logger.getLogger(ArticleSerializer.class.getName()).log(Level.SEVERE, "Failed to parse message! :(");
+            logger.log(Level.SEVERE, "Failed to parse message! :(");
             e.printStackTrace();
             return null;
         }
     }
 
-    public String toMessage(Article article) {
+    public Article fromJson(String article){
+        Article result = jsonSerializer.fromJson(article, Article.class);
+        logger.log(Level.FINE, "Parsed article: " + result.toString());
+        return result;
+    }
+
+    public String toJson(Article article) {
+        String result = jsonSerializer.toJson(article);
+        logger.log(Level.FINE, "Parsed article: " + result);
         return jsonSerializer.toJson(article);
     }
 }

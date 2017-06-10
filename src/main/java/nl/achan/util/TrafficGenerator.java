@@ -1,7 +1,7 @@
 package nl.achan.util;
 
 import nl.achan.ads.Advertiser;
-import nl.achan.aggregate.SlackerNews;
+import nl.achan.aggregate.newsfeed.SlackerNews;
 import nl.achan.aggregate.publishers.Publisher;
 import nl.achan.aggregate.subscribers.Subscriber;
 

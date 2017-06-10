@@ -1,7 +1,6 @@
 package nl.achan.api;
 
-import nl.achan.ads.advertisers.AdvertiserAppGateway;
-import nl.achan.aggregate.NewsFeedAppGateway;
+import nl.achan.aggregate.newsfeed.NewsFeedAppGateway;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
