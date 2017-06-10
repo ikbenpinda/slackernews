@@ -2,6 +2,7 @@ package nl.achan.aggregate;
 
 import com.google.gson.Gson;
 import nl.achan.aggregate.interfaces.Article;
+import nl.achan.aggregate.interfaces.ArticleView;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -47,5 +48,11 @@ public class ArticleSerializer {
         String result = jsonSerializer.toJson(article);
         logger.log(Level.FINE, "Parsed article: " + result);
         return jsonSerializer.toJson(article);
+    }
+
+    public String toJson(ArticleView articleView){
+        String result = jsonSerializer.toJson(articleView);
+        logger.log(Level.FINE, "Parsed articleView: " + result);
+        return jsonSerializer.toJson(articleView);
     }
 }

@@ -43,4 +43,13 @@ public class ArticleView {
     public void setAdLink(String adLink) {
         this.adLink = adLink;
     }
+
+    @Override
+    public String toString() {
+        return "ArticleView{" +
+                "articleId=" + articleId +
+                ", articleLink='" + articleLink + '\'' +
+                ", adLink='" + adLink + '\'' +
+                '}';
+    }
 }

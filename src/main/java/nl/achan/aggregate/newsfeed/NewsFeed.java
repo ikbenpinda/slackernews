@@ -17,7 +17,8 @@ public interface NewsFeed {
     /**
      * Make the prepared article available for its users.
      * @param article the processed article (includes ads).
+     * @param category - the category of the article.
      */
-    void publishArticle(ArticleView article);
+    void publishArticle(ArticleView article, String category);
 
 }
