@@ -1,5 +1,7 @@
 ### SlackerNews.  
 
+_For the english version, see [here]()_
+
 #### Inleiding.
 
 Dit project is gemaakt als voorbeeld van een JMS applicatie,
@@ -13,11 +15,24 @@ waarbij content verzameld wordt uit verschillende bronnen om op één plek te ku
 - Deployment
 - Projectoverzicht
     - Het nieuwsaggregaat
-    - Het advertentieplatform, (aka _het avontuur van Scather-Gather en de Chained Gateways_)
+        - Verbinden met ActiveMQ
+            - Queues/Topics
+            - Message Gateway
+            - Application Gateway / Chained Gateways
+        - Publish-Subscribe
+        - Routing+Transformation
+    - Het advertentieplatform
+        - Scatter-Gather
+        - Recipient List
+        - Aggregator
     - De REST API
 - Extra bronnen
     - Monitoring met JMX
-    - Unit-testen van JMS.
+    - Unit-testen van JMS
+    - Deployment:
+        - via _Maven_
+        - via _Docker_
+        - via _IntelliJ/Netbeans_
 
 #### Deployment.
 
