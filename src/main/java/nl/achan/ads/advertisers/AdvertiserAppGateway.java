@@ -32,12 +32,11 @@ public class AdvertiserAppGateway implements MessageListener{
     }
 
     public void reply(BidReply reply){
-        sender.createTextMessage(serializer.toReply(reply));
+        sender.send(sender.createTextMessage(serializer.toReply(reply)));
         Logger.getLogger(AdvertiserAppGateway.class.getName()).log(Level.INFO, "Replying with " + reply.toString());
     }
 
-    public void onRequest(String request){
-        BidRequest bidRequest = serializer.fromRequest(request);
+    private void onRequest(BidRequest bidRequest){
         advertiser.receiveRequest(bidRequest);
         Logger.getLogger(AdvertiserAppGateway.class.getName()).log(Level.INFO, "Received request: " + bidRequest.toString());
     }
@@ -46,7 +45,7 @@ public class AdvertiserAppGateway implements MessageListener{
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage) message;
         try {
-            onRequest(textMessage.getText());
+            onRequest(serializer.fromRequest(textMessage.getText()));
         } catch (JMSException e) {
             Logger.getLogger(AdvertiserAppGateway.class.getName()).log(Level.INFO, "Failed to parse message! :(");
             e.printStackTrace();

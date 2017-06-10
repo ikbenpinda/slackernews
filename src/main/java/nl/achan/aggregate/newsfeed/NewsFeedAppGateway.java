@@ -1,20 +1,12 @@
 package nl.achan.aggregate.newsfeed;
 
-import com.google.gson.Gson;
-import nl.achan.ads.BidRequest;
-import nl.achan.ads.AdvertisersRecipientList;
 import nl.achan.aggregate.ArticleSerializer;
 import nl.achan.aggregate.interfaces.Article;
 import nl.achan.aggregate.interfaces.ArticleView;
 import nl.achan.aggregate.interfaces.OnArticleSubmittedCallback;
 import nl.achan.aggregate.publishers.MessageSenderTopicGateway;
 import nl.achan.jms.MessageReceiverGateway;
-import nl.achan.jms.MessageSenderGateway;
-import nl.achan.ads.OnBidsArrivedCallback;
 
-import javax.jms.Message;
-import java.util.Random;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static nl.achan.monitoring.Configuration.PUBLISHER_QUEUE;
