@@ -1,5 +1,8 @@
 package nl.achan.aggregate.subscribers;
 
+import nl.achan.aggregate.interfaces.Article;
+import nl.achan.aggregate.interfaces.ArticleView;
+
 /**
  * The basic listener representing an individual user.
  *
@@ -7,16 +10,30 @@ package nl.achan.aggregate.subscribers;
  */
 public class UserSubscriber implements Subscriber{
 
-    UserApplicationGateway gateway;
+    private UserApplicationGateway gateway;
+    private OnArticlePublishedCallback callback;
 
-    public UserSubscriber(UserApplicationGateway gateway) {
+    public UserSubscriber() {
         this.gateway = new UserApplicationGateway();
+    }
+
+    public void subscribe(String topic, OnArticlePublishedCallback callback){
+        this.callback = callback;
+        gateway.subscribe(topic, article -> {
+            if (callback != null)
+                callback.execute(article);
+        });
     }
 
     @Override
     public void subscribe(String topic) {
-        gateway.subscribe(topic, article -> {
-            // todo - handle incoming article.
-        });
+        subscribe(topic, null);
+//        gateway.subscribe(topic, article -> {
+//            // todo - handle incoming article.
+//        });
+    }
+
+    public interface OnArticlePublishedCallback {
+        void execute(ArticleView article);
     }
 }

@@ -1,6 +1,5 @@
 package nl.achan.ads.advertisers;
 
-import nl.achan.ads.Advertiser;
 import nl.achan.ads.BidReply;
 import nl.achan.ads.BidRequest;
 import nl.achan.jms.MessageReceiverGateway;
@@ -13,6 +12,8 @@ import javax.jms.TextMessage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static nl.achan.monitoring.Configuration.ADVERTISER_REPLY_QUEUE;
+
 /**
  * Created by Etienne on 9-6-2017.
  */
@@ -23,8 +24,8 @@ public class AdvertiserAppGateway implements MessageListener{
     private BidSerializer serializer;
     private Advertiser advertiser;
 
-    public AdvertiserAppGateway(final String replyChannel, final String requestChannel, Advertiser advertiser) {
-        sender = new MessageSenderGateway(replyChannel);
+    public AdvertiserAppGateway(String requestChannel, Advertiser advertiser) {
+        sender = new MessageSenderGateway(ADVERTISER_REPLY_QUEUE);
         receiver = new MessageReceiverGateway(requestChannel);
         receiver.setListener(this);
         serializer = new BidSerializer();

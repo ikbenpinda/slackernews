@@ -2,6 +2,8 @@ package nl.achan.aggregate.publishers;
 
 import nl.achan.aggregate.ArticleSerializer;
 import nl.achan.aggregate.interfaces.Article;
+import nl.achan.jms.MessageSenderGateway;
+import nl.achan.monitoring.Configuration;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,8 +16,7 @@ import java.util.logging.Logger;
  */
 public class PublisherApplicationGateway {
 
-    private String topic;
-    private MessageSenderTopicGateway gateway;
+    private MessageSenderGateway gateway;
     private ArticleSerializer serializer;
     private Logger logger;
 
@@ -25,14 +26,9 @@ public class PublisherApplicationGateway {
     }
 
     public void publish(Article article) {
-        setTopic(article.getCategory());
-        logger.log(Level.INFO, "Topic set: " + topic);
+        gateway = new MessageSenderGateway(Configuration.PUBLISHER_QUEUE);
         gateway.send(gateway.createTextMessage(serializer.toJson(article)));
         logger.log(Level.INFO, "Article sent!");
         logger.log(Level.FINE, "Article: " + serializer.toJson(article));
-    }
-
-    private void setTopic(String topic){
-        gateway = new MessageSenderTopicGateway(topic);
     }
 }

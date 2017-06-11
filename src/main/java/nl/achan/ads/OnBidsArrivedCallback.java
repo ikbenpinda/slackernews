@@ -5,5 +5,5 @@ package nl.achan.ads;
  */
 public interface OnBidsArrivedCallback {
 
-    void execute(BidRequest bid);
+    void execute(BidReply bid);
 }

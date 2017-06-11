@@ -14,7 +14,7 @@ public class BidRequest implements Serializable{
     /**
      * Identifier for the bid itself.
      */
-    private int bidId;
+    private long bidId;
 
     /**
      * Related article
@@ -29,13 +29,13 @@ public class BidRequest implements Serializable{
     public BidRequest() {
     }
 
-    public BidRequest(int bidId, Article article, int minBid) {
+    public BidRequest(long bidId, Article article, int minBid) {
         this.bidId = bidId;
         this.article = article;
         this.minBid = minBid;
     }
 
-    public int getBidId() {
+    public long getBidId() {
         return bidId;
     }
 

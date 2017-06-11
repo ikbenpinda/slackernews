@@ -9,6 +9,6 @@ import static nl.achan.monitoring.Configuration.ADVERTISER_REQUEST_QUEUE_POPADS;
 public class PopAdsAdvertiser extends BaseAdvertiser/*implements Advertiser, MessageListener*/{
 
     public PopAdsAdvertiser() {
-        super(ADVERTISER_REPLY_QUEUE_POPADS, ADVERTISER_REQUEST_QUEUE_POPADS);
+        super(ADVERTISER_REQUEST_QUEUE_POPADS);
     }
 }

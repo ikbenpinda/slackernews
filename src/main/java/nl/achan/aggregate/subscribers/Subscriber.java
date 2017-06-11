@@ -5,4 +5,5 @@ package nl.achan.aggregate.subscribers;
  */
 public interface Subscriber {
     void subscribe(String topic);
+    void subscribe(String topic, UserSubscriber.OnArticlePublishedCallback callback);
 }

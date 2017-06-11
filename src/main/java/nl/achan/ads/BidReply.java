@@ -12,7 +12,7 @@ public class BidReply implements Serializable{
     /**
      * Reference to the bid.
      */
-    private int bidId;
+    private long bidId;
 
     /**
      * The offer made by the advertiser.
@@ -27,17 +27,17 @@ public class BidReply implements Serializable{
     public BidReply() {
     }
 
-    public BidReply(int bidId, int bid, String adLink) {
+    public BidReply(long bidId, int bid, String adLink) {
         this.bidId = bidId;
         this.bid = bid;
         this.adLink = adLink;
     }
 
-    public int getBidId() {
+    public long getBidId() {
         return bidId;
     }
 
-    public void setBidId(int bidId) {
+    public void setBidId(long bidId) {
         this.bidId = bidId;
     }
 

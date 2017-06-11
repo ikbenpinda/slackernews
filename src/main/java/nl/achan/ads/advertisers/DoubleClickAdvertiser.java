@@ -9,6 +9,6 @@ import static nl.achan.monitoring.Configuration.ADVERTISER_REQUEST_QUEUE_DOUBLEC
 public class DoubleClickAdvertiser extends BaseAdvertiser/*implements Advertiser, MessageListener*/{
 
     public DoubleClickAdvertiser() {
-        super(ADVERTISER_REPLY_QUEUE_DOUBLECLICK, ADVERTISER_REQUEST_QUEUE_DOUBLECLICK);
+        super(ADVERTISER_REQUEST_QUEUE_DOUBLECLICK);
     }
 }

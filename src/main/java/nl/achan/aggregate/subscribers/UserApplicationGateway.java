@@ -1,10 +1,15 @@
 package nl.achan.aggregate.subscribers;
 
+import com.google.gson.Gson;
 import nl.achan.aggregate.ArticleSerializer;
 import nl.achan.aggregate.interfaces.Article;
+import nl.achan.aggregate.interfaces.ArticleView;
 
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+import java.util.TooManyListenersException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +34,12 @@ public class UserApplicationGateway {
         this.callback = callback;
         receiver = new MessageReceiverTopicGateway(topic);
         receiver.setListener(message -> {
-            Article article = serializer.fromMessage(message);
+            ArticleView article = null;//serializer.fromMessage(message);
+            try {
+                article = new Gson().fromJson( ((TextMessage) message).getText(), ArticleView.class);
+            } catch (JMSException e) {
+                e.printStackTrace();
+            }
             logger.log(Level.INFO, "Received new article in topic: " + topic + ": " + article.toString());
             if (callback != null)
                 callback.execute(article);
@@ -37,6 +47,6 @@ public class UserApplicationGateway {
     }
 
     public interface OnMessageReceived {
-        void execute(Article article);
+        void execute(ArticleView article);
     }
 }

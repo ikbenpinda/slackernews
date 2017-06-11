@@ -1,4 +1,4 @@
-package nl.achan.ads;
+package nl.achan.aggregate.newsfeed.adbroker;
 
 import nl.achan.aggregate.interfaces.Article;
 import nl.achan.aggregate.Categories;
@@ -12,6 +12,7 @@ import static nl.achan.monitoring.Configuration.ADVERTISER_REQUEST_QUEUE_POPADS;
 
 /**
  * Implementation for the Recipient List pattern.
+ * Contains all logic for determining the advertisers to send a request to.
  *
  * Created by Etienne on 9-6-2017.
  */

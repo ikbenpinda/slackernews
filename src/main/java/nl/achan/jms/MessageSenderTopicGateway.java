@@ -1,4 +1,4 @@
-package nl.achan.aggregate.publishers;
+package nl.achan.jms;
 
 import nl.achan.jms.MessageReceiverGateway;
 import org.apache.activemq.ActiveMQConnectionFactory;

@@ -40,19 +40,19 @@ public class ArticleSerializer {
 
     public Article fromJson(String article){
         Article result = jsonSerializer.fromJson(article, Article.class);
-        logger.log(Level.FINE, "Parsed article: " + result.toString());
+        logger.log(Level.INFO, "Parsed article: " + result.toString());
         return result;
     }
 
     public String toJson(Article article) {
         String result = jsonSerializer.toJson(article);
-        logger.log(Level.FINE, "Parsed article: " + result);
+        logger.log(Level.INFO, "Parsed article: " + result);
         return jsonSerializer.toJson(article);
     }
 
     public String toJson(ArticleView articleView){
         String result = jsonSerializer.toJson(articleView);
-        logger.log(Level.FINE, "Parsed articleView: " + result);
+        logger.log(Level.INFO, "Parsed articleView: " + result);
         return jsonSerializer.toJson(articleView);
     }
 }

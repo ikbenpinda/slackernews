@@ -40,7 +40,7 @@ public class PublisherCLI {
                 int categoryIndex = Integer.parseInt(in.readLine());
                 Article article = new Article(id, link, publisherName, values[categoryIndex]);
 
-                System.out.println("publishing article " + article.toString());
+                System.out.println("Publishing article: " + article.toString());
 
                 publisher.publish(article);
             }

@@ -1,13 +1,8 @@
 package nl.achan.ads.advertisers;
 
-import nl.achan.ads.Advertiser;
 import nl.achan.ads.BidReply;
 import nl.achan.ads.BidRequest;
-import nl.achan.jms.MessageReceiverGateway;
-import nl.achan.jms.MessageSenderGateway;
 
-import javax.jms.Message;
-import javax.jms.MessageListener;
 import java.util.Random;
 
 /**
@@ -26,11 +21,10 @@ public abstract class BaseAdvertiser implements Advertiser{
 
     /**
      * Creates a new advertiser.
-     * @param replyChannel the name of the queue for replying.
      * @param requestChannel the name of the queue for incoming adspace bidding requests.
      */
-    public BaseAdvertiser(String replyChannel, String requestChannel) {
-        gateway = new AdvertiserAppGateway(replyChannel, requestChannel, this);
+    public BaseAdvertiser(String requestChannel) {
+        gateway = new AdvertiserAppGateway(requestChannel, this);
     }
 
     /**

@@ -82,14 +82,14 @@ public class TrafficGenerator {
         Subscriber subscriber1 = new UserSubscriber();
         Subscriber subscriber2 = new UserSubscriber();
         Subscriber subscriber3 = new UserSubscriber();
-        subscriber1.subscribe(Categories.TECHNOLOGY.name(), article -> {
-            System.out.println("Subscriber #1: New article published in category " + article.getCategory() + ": " + article.toString());
+        subscriber1.subscribe(Categories.TECHNOLOGY.name()+"Topic", article -> {
+            System.out.println("Subscriber #1: New article published in category " + "" + ": " + article.toString());
         });
-        subscriber2.subscribe(Categories.TECHNOLOGY.name(), article -> {
-            System.out.println("Subscriber #2: New article published in category " + article.getCategory() + ": " + article.toString());
+        subscriber2.subscribe(Categories.TECHNOLOGY.name()+"Topic", article -> {
+            System.out.println("Subscriber #2: New article published in category " + "" + ": " + article.toString());
         });
-        subscriber3.subscribe(Categories.GAMING.name(), article -> {
-            System.out.println("Subscriber #3: New article published in category " + article.getCategory() + ": " + article.toString());
+        subscriber3.subscribe(Categories.GAMING.name()+"Topic", article -> {
+            System.out.println("Subscriber #3: New article published in category " + "" + ": " + article.toString());
         });
 
         System.out.println("Setting up publishers...[4/4]");
@@ -111,7 +111,7 @@ public class TrafficGenerator {
         // todo - Display REST API.
 
         System.out.println("Done!");
-        System.out.println("Publish articles(Default = all, S= Single-only)? [Y/S/N?]");
+        System.out.println("Publish articles(Y = all, S = Single-only)? [Y/S/N?]");
         input = in.readLine();
         if (input.toUpperCase().equals("Y"))
             for (Article article : articles) {

@@ -4,7 +4,7 @@ import nl.achan.aggregate.ArticleSerializer;
 import nl.achan.aggregate.interfaces.Article;
 import nl.achan.aggregate.interfaces.ArticleView;
 import nl.achan.aggregate.interfaces.OnArticleSubmittedCallback;
-import nl.achan.aggregate.publishers.MessageSenderTopicGateway;
+import nl.achan.jms.MessageSenderTopicGateway;
 import nl.achan.jms.MessageReceiverGateway;
 
 import java.util.logging.Logger;

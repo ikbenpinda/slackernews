@@ -84,4 +84,9 @@ public class Configuration { // FIXME - move to properties file?
      */
     public static final String ADVERTISER_REQUEST_QUEUE_POPADS = "PopAdsRequestQueue";
 
+    /**
+     * Default queue for advertiser bidding replies.
+     * This should make the other queues obsolete.
+     */
+    public static final String ADVERTISER_REPLY_QUEUE = "AdvertiserReplyQueue";
 }

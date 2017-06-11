@@ -1,8 +1,9 @@
 package nl.achan.aggregate.newsfeed;
 
-import nl.achan.ads.AdBrokerImpl;
 import nl.achan.aggregate.interfaces.Article;
 import nl.achan.aggregate.interfaces.ArticleView;
+import nl.achan.aggregate.newsfeed.adbroker.AdBroker;
+import nl.achan.aggregate.newsfeed.adbroker.AdBrokerImpl;
 import nl.achan.persistence.ArticleRepository;
 import nl.achan.persistence.ArticleRepositoryInMemoryImpl;
 
