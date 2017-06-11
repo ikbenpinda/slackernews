@@ -58,6 +58,8 @@ public class TrafficGenerator {
 
         System.out.println("Initializing full stack...");
 
+        // todo - Clear the JMS pipeline.
+
         System.out.println("Initializing core system...[1/4]");
 
         // The core system logs everything, but due to usage of Logger.log()
@@ -106,14 +108,31 @@ public class TrafficGenerator {
         Article article8 = new Article(8, "http://example.com/articles/8", "Leddit", Categories.GAMING);
         List<Article> articles = new ArrayList<>(Arrays.asList(article1, article2, article3, article4, article5, article6, article7, article8));
 
+        // todo - Display REST API.
+
         System.out.println("Done!");
-        System.out.println("Publish articles? [Y/N?]");
+        System.out.println("Publish articles(Default = all, S= Single-only)? [Y/S/N?]");
         input = in.readLine();
         if (input.toUpperCase().equals("Y"))
             for (Article article : articles) {
                 System.out.println("Publishing article (" + article.toString() + ")");
                 publisher.publish(article);
             }
+        else if (input.toUpperCase().equals("S")) {
+            System.out.println("Article ID?");
+            for (Article article : articles) {
+                System.out.println(article.toString());
+            }
+            int id = Integer.parseInt(in.readLine());
+            publisher.publish(articles.get(id - 1));
+        }
+
+        // Workaround to move additional printing to bottom.
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("Done!");
         System.out.println("Press enter to exit.");
         in.readLine();
