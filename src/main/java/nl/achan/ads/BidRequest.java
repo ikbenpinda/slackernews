@@ -1,6 +1,6 @@
 package nl.achan.ads;
 
-import nl.achan.aggregate.interfaces.Article;
+import nl.achan.util.domain.Article;
 
 import java.io.Serializable;
 

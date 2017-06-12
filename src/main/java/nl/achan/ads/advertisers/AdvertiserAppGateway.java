@@ -2,8 +2,8 @@ package nl.achan.ads.advertisers;
 
 import nl.achan.ads.BidReply;
 import nl.achan.ads.BidRequest;
-import nl.achan.jms.MessageReceiverGateway;
-import nl.achan.jms.MessageSenderGateway;
+import nl.achan.util.jms.MessageReceiverGateway;
+import nl.achan.util.jms.MessageSenderGateway;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -12,7 +12,7 @@ import javax.jms.TextMessage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static nl.achan.monitoring.Configuration.ADVERTISER_REPLY_QUEUE;
+import static nl.achan.util.Configuration.ADVERTISER_REPLY_QUEUE;
 
 /**
  * Created by Etienne on 9-6-2017.

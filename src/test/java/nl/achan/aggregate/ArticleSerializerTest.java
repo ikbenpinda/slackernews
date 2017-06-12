@@ -1,8 +1,8 @@
 package nl.achan.aggregate;
 
-import com.google.gson.Gson;
-import junit.framework.Assert;
-import nl.achan.aggregate.interfaces.Article;
+import nl.achan.util.domain.Article;
+import nl.achan.util.Categories;
+import nl.achan.util.ArticleSerializer;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

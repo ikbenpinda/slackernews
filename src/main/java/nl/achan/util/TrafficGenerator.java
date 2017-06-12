@@ -1,18 +1,16 @@
 package nl.achan.util;
 
-import com.sun.javafx.binding.StringFormatter;
 import nl.achan.ads.advertisers.AdMobAdvertiser;
 import nl.achan.ads.advertisers.Advertiser;
 import nl.achan.ads.advertisers.DoubleClickAdvertiser;
 import nl.achan.ads.advertisers.PopAdsAdvertiser;
-import nl.achan.aggregate.Categories;
-import nl.achan.aggregate.interfaces.Article;
-import nl.achan.aggregate.newsfeed.NewsFeed;
-import nl.achan.aggregate.newsfeed.SlackerNews;
-import nl.achan.aggregate.publishers.InternalPublisher;
-import nl.achan.aggregate.publishers.Publisher;
-import nl.achan.aggregate.subscribers.Subscriber;
-import nl.achan.aggregate.subscribers.UserSubscriber;
+import nl.achan.util.domain.Article;
+import nl.achan.newsfeed.NewsFeed;
+import nl.achan.newsfeed.SlackerNews;
+import nl.achan.publishers.InternalPublisher;
+import nl.achan.publishers.Publisher;
+import nl.achan.subscribers.Subscriber;
+import nl.achan.subscribers.UserSubscriber;
 
 import java.io.BufferedReader;
 import java.io.IOException;
