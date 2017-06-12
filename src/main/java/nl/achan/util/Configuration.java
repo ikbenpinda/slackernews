@@ -13,14 +13,15 @@ public class Configuration { // FIXME - move to properties file?
     public static final int ACTIVEMQ_PORT = 32768;
 
     /**
-     * The IP-address for the docker machine. Default address = 192.168.99.100.
+     * The IP-address for the (virtual) machine running ActiveMQ.
+     * Default Docker address = 192.168.99.100.
      */
-    public static final String DOCKER_IP = "192.168.99.100";
+    public static final String MACHINE_IP = "192.168.99.100";
 
     /**
      * The full broker URL for the ActiveMQConnectionFactory.
      */
-    public static final String DEFAULT_BROKER_URL = "tcp://" + DOCKER_IP + ":" + ACTIVEMQ_PORT;
+    public static final String DEFAULT_BROKER_URL = "tcp://" + MACHINE_IP + ":" + ACTIVEMQ_PORT;
 
     /**
      * The queue for publishers to publish articles to.
