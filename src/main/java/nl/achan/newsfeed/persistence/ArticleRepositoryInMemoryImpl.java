@@ -3,6 +3,7 @@ package nl.achan.newsfeed.persistence;
 import nl.achan.util.domain.Article;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class ArticleRepositoryInMemoryImpl implements ArticleRepository {
 
-    List<Article> articles = new ArrayList<>();
+    List<Article> articles = new LinkedList<>();
 
     @Override
     public boolean add(Article article) {

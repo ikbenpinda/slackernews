@@ -1,12 +1,16 @@
 package nl.achan.newsfeed.api;
 
+import nl.achan.newsfeed.NewsFeed;
 import nl.achan.newsfeed.NewsFeedAppGateway;
+import nl.achan.newsfeed.SlackerNews;
+import nl.achan.util.Categories;
+import nl.achan.util.domain.Article;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * REST API for all topic-related stuff.
@@ -17,7 +21,7 @@ import javax.ws.rs.core.Response;
 public class TopicsAPI {
 
     @Inject
-    NewsFeedAppGateway gateway;
+    SlackerNews slackerNews;
 
     /**
      * Returns the five latest articles for the given topic.
@@ -25,8 +29,13 @@ public class TopicsAPI {
      */
     @GET
     @Path("{topic}/latest")
-    public Response getLatestFromTopic(){
-        return Response.status(Response.Status.NOT_IMPLEMENTED).build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getLatestFromTopic(@PathParam("topic") String topic){
+        List<Article> articles = slackerNews.getLatestArticles(topic);
+        if (articles != null)
+            return Response.ok(articles, MediaType.APPLICATION_JSON).build();
+        else
+            return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     /**
@@ -35,8 +44,13 @@ public class TopicsAPI {
      */
     @GET
     @Path("{topic}/all")
-    public Response getAllFromTopic(){
-        return Response.status(Response.Status.NOT_IMPLEMENTED).build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllFromTopic(@PathParam("topic") String topic){
+        List<Article> articles = slackerNews.getAllFromTopic(topic);
+        if (articles != null)
+            return Response.ok(articles, MediaType.APPLICATION_JSON).build();
+        else
+            return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     /**
@@ -45,16 +59,20 @@ public class TopicsAPI {
      */
     @GET
     @Path("topics")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response listTopics(){
-        return Response.status(Response.Status.NOT_IMPLEMENTED).build();
+        return Response.ok(Categories.values(), MediaType.APPLICATION_JSON).build();
     }
 
     /**
      * Places a new subscription on the specific topic.
-     * @return
+     *
+     * Currently not implemented because the implementation likely requires websockets to really work,
+     * which is currently out-of-scope.
      */
     @POST
     @Path("{topic}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createTopic(){
         return Response.status(Response.Status.NOT_IMPLEMENTED).build();
     }
